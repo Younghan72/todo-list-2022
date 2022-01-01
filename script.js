@@ -7,4 +7,8 @@ for (let i = 0; i < clickLi.length; i++) {
     
 }
 // 2. input ID 불러오기 및 저장, 이벤트 확인, 함수 실행
-const textInput = document.querySelector(`contents.value`)
+const textInput = document.querySelector(`.add`)
+const button = document.querySelector(`button`)
+button.addEventListener('click', function () {
+    alert(textInput.value)
+})
