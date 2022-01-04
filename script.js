@@ -1,5 +1,6 @@
 // 1. li 불러오기 및 저장, 이벤트 확인, 함수 실행
 liClick()
+removeButton()
 
 // 2. input ID 불러오기 및 저장, 이벤트 확인, 함수 실행
 const textInput = document.querySelector(`.add`)
@@ -8,22 +9,19 @@ const ulList = document.querySelector(`ul`)
 button.addEventListener('click', function () {
     if (textInput.value == ``) {
         inputCheck()
+        removeButton()
+        checkDle()
     } else {
         ulList.innerHTML +=`<li><input type="checkbox" name="" id="">${textInput.value}<button>삭제</button></li>`
         liClick()
         textInput.value = ``
+        removeButton()
+        checkDle()
     }
-    
 })
-//3. li 목록에 삭제 버튼 추가하기, 삭제 버튼 클릭시 몇번째 li인지 alret하기
 
-const buttonLi = document.querySelectorAll(`li button`)
-for (let i = 0; i < buttonLi.length; i++) {
-    buttonLi[i].addEventListener(`click`, function () {
-        alert(`${i + 1}번째`)
-    })
-    
-}
+checkDle
+//3. li 목록에 삭제 버튼 추가하기, 삭제 버튼 클릭시 몇번째 li인지 alret하기
 
 function liClick() {
     const listLi = document.querySelectorAll(`li`)
@@ -46,6 +44,18 @@ function removeButton() {
 
 function inputCheck() {
     alert(`값을 입력하세요.`)
+}
+
+function checkDle() {
+    const checkDle = document.querySelectorAll(`ul li input`)
+    console.log(checkDle)
+    for (let i = 0; i < checkDle.length; i++) {
+        checkDle[i].addEventListener(`click`, function () {
+            checkDle[i].style.color = `grey`
+        })
+        
+        
+    }
 }
 
 // 숙제
