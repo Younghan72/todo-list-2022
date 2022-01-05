@@ -1,6 +1,7 @@
 // 1. li 불러오기 및 저장, 이벤트 확인, 함수 실행
 liClick()
 removeButton()
+checkDle()
 
 // 2. input ID 불러오기 및 저장, 이벤트 확인, 함수 실행
 const textInput = document.querySelector(`.add`)
@@ -20,7 +21,6 @@ button.addEventListener('click', function () {
     }
 })
 
-checkDle
 //3. li 목록에 삭제 버튼 추가하기, 삭제 버튼 클릭시 몇번째 li인지 alret하기
 
 function liClick() {
@@ -47,8 +47,8 @@ function inputCheck() {
 }
 
 function checkDle() {
-    const checkDle = document.querySelectorAll(`ul li input`)
-    console.log(checkDle)
+    const checkDle = document.querySelectorAll(`ul li`)
+    // console.log(checkDle)
     for (let i = 0; i < checkDle.length; i++) {
         checkDle[i].addEventListener(`click`, function () {
             checkDle[i].style.color = `grey`
@@ -60,5 +60,4 @@ function checkDle() {
 
 // 숙제
 // input에 입력한 값이 없는 상태에서 버튼 클릭하면 '값을 입력하세요' 경고창 출력
-
 // 체크버튼 클릭하면 li의 글자색을 회색으로 변경. 체크 해제하면 다시 검은색으로 변경 
