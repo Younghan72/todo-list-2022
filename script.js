@@ -1,7 +1,8 @@
+const data = [{id:1,title:`a`, completed: true},{id:2,title:`b`, completed: true},{id:3,title:`c`, completed: true}] // ctrl d
 // 1. li 불러오기 및 저장, 이벤트 확인, 함수 실행
-liClick()
-removeButton()
-checkDle()
+addLi()
+
+
 
 // 2. input ID 불러오기 및 저장, 이벤트 확인, 함수 실행
 const textInput = document.querySelector(`.add`)
@@ -9,16 +10,14 @@ const button = document.querySelector(`.addButton`)
 const ulList = document.querySelector(`ul`)
 button.addEventListener('click', function () {
     if (textInput.value == ``) {
-        inputCheck()
-        removeButton()
-        checkDle()
-    } else {
-        ulList.innerHTML +=`<li><input type="checkbox" name="" id="">${textInput.value}<button>삭제</button></li>`
-        liClick()
-        textInput.value = ``
-        removeButton()
-        checkDle()
+        alert(`값을 입력하세요.`)
+        return
     }
+    // data배열에 요소 추가
+    data.push({id:4,title:textInput.value, completed: false}) 
+    // addLi
+    addLi()
+    textInput.value = ``
 })
 
 //3. li 목록에 삭제 버튼 추가하기, 삭제 버튼 클릭시 몇번째 li인지 alret하기
@@ -42,22 +41,31 @@ function removeButton() {
     }
 }
 
-function inputCheck() {
-    alert(`값을 입력하세요.`)
-}
-
-function checkDle() {
-    const checkDle = document.querySelectorAll(`ul li`)
-    // console.log(checkDle)
-    for (let i = 0; i < checkDle.length; i++) {
-        checkDle[i].addEventListener(`click`, function () {
-            checkDle[i].style.color = `grey`
+function checkboxClick() {
+    const checkbox = document.querySelectorAll(`ul li`)
+    // console.log(checkbox)
+    for (let i = 0; i < checkbox.length; i++) {
+        checkbox[i].addEventListener(`click`, function () {
+            checkbox[i].classList.add(`grey`)
+            //
         })
         
         
     }
 }
 
+function addLi() {
+    const ul = document.querySelector(`ul`)
+    ul.innerHTML = ``
+    for (let i = 0; i < data.length; i++) {
+        ul.innerHTML += `<li><input type="checkbox">${data[i].name}<button>삭제</button></li>`
+    }
+    liClick()
+    removeButton()
+    checkboxClick()
+}
+
 // 숙제
-// input에 입력한 값이 없는 상태에서 버튼 클릭하면 '값을 입력하세요' 경고창 출력
-// 체크버튼 클릭하면 li의 글자색을 회색으로 변경. 체크 해제하면 다시 검은색으로 변경 
+// 삭제 버튼 클릭 시 배열에서 요소 삭제
+// 체크박스 클릭 시 배열의 completed 값 변경
+// addLi 호출 시 completed가 true이면 체크 된 상태로 표시 
