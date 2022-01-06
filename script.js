@@ -14,14 +14,7 @@ button.addEventListener('click', function () {
         alert(`값을 입력하세요.`)
         return
     }
-    for (let i = 0; i < data.length; i++) { // TODO
-        if (i == data.length-1) {
-            data.push({id:data[i].id+1,title:textInput.value, completed:0})
-            break
-        }
-
-        
-    }
+    data.push({id:data[data.length-1].id+1,title:textInput.value, completed:0})
     
     // addLi
     addLi()
@@ -72,18 +65,14 @@ function addLi() {
     const ul = document.querySelector(`ul`)
     ul.innerHTML = ``
     for (let i = 0; i < data.length; i++) {
-        if (data[i].completed == 1) { // TODO 
-            ul.innerHTML += `<li class="grey" id=2><input type="checkbox" checked>${data[i].title}<button>삭제</button></li>`
-            
-        } else{
-            ul.innerHTML += `<li><input type="checkbox" >${data[i].title}<button>삭제</button></li>`
-        }
+        data[i].completed == 1 ? ul.innerHTML += `<li class="grey"><input type="checkbox" checked>${data[i].title}<button>삭제</button></li>` : ul.innerHTML += `<li><input type="checkbox" >${data[i].title}<button>삭제</button></li>`
     }
-    liClick()
+    // liClick()
     removeButton()
     checkboxClick()
 }
 
+
 // 숙제
-// push 할 때 for 문 사용 없이 마지막 id 추가
-// 75line 삼항연산자 사용
+// push 할 때 for 문 사용 없이 마지막 id 추가 V
+// 75line 삼항연산자 사용 V
