@@ -1,4 +1,4 @@
-const data = [{id:1,title:`a`, completed: true},{id:2,title:`b`, completed: true},{id:3,title:`c`, completed: true}] // ctrl d
+const data = [{id:1,title:`a`, completed:"checked"},{id:2,title:`b`, completed: ""},{id:3,title:`c`, completed: ""}] // ctrl d
 // 1. li 불러오기 및 저장, 이벤트 확인, 함수 실행
 addLi()
 
@@ -14,7 +14,7 @@ button.addEventListener('click', function () {
         return
     }
     // data배열에 요소 추가
-    data.push({id:4,title:textInput.value, completed: false}) 
+    data.push({id:1,title:textInput.value, completed:""}) 
     // addLi
     addLi()
     textInput.value = ``
@@ -47,7 +47,7 @@ function checkboxClick() {
     for (let i = 0; i < checkbox.length; i++) {
         checkbox[i].addEventListener(`click`, function () {
             checkbox[i].classList.add(`grey`)
-            //
+            data[i].completed = "checked"
         })
         
         
@@ -58,7 +58,8 @@ function addLi() {
     const ul = document.querySelector(`ul`)
     ul.innerHTML = ``
     for (let i = 0; i < data.length; i++) {
-        ul.innerHTML += `<li><input type="checkbox">${data[i].name}<button>삭제</button></li>`
+        ul.innerHTML += `<li><input type="checkbox" ${data[i].completed} >${data[i].title}<button>삭제</button></li>`
+        
     }
     liClick()
     removeButton()
@@ -68,4 +69,4 @@ function addLi() {
 // 숙제
 // 삭제 버튼 클릭 시 배열에서 요소 삭제
 // 체크박스 클릭 시 배열의 completed 값 변경
-// addLi 호출 시 completed가 true이면 체크 된 상태로 표시 
+// addLi 호출 시 completed가 true이면 체크 된 상태로 표시  V
