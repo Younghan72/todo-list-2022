@@ -63,16 +63,17 @@ function checkboxClick() {
 
 function addLi() {
     const ul = document.querySelector(`ul`)
-    ul.innerHTML = ``
+    let htmlString = ``
     for (let i = 0; i < data.length; i++) {
-        data[i].completed == 1 ? ul.innerHTML += `<li class="grey"><input type="checkbox" checked>${data[i].title}<button>삭제</button></li>` : ul.innerHTML += `<li><input type="checkbox" >${data[i].title}<button>삭제</button></li>`
+        htmlString += `<li class="${data[i].completed == 1 ? "grey" : ''}">
+            <input type="checkbox" ${data[i].completed == 1 ? "checked" : ''}>${data[i].title}<button>삭제</button>
+        </li>`
     }
+    ul.innerHTML = htmlString
+    
     // liClick()
     removeButton()
     checkboxClick()
 }
 
 
-// 숙제
-// push 할 때 for 문 사용 없이 마지막 id 추가 V
-// 75line 삼항연산자 사용 V
