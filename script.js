@@ -76,4 +76,5 @@ function addLi() {
     checkboxClick()
 }
 
+// 숙제: 이벤트 위임으로 변경
 
