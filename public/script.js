@@ -1,7 +1,19 @@
 // 0: 미완료, 1: 완료
-const data = [{id:1,title:`a`, completed:1},{id:2,title:`b`, completed: 0},{id:3,title:`c`, completed: 0}] // ctrl d
+let todos = [] // ctrl d
+function getData(){
+    fetch('https://jsonplaceholder.typicode.com/todos')
+        .then(data =>data.json())
+        .then(data => {
+            todos = data
+            makeList()
+        })
+        .catch(err => console.error(err))
+     
+}
 // 1. li 불러오기 및 저장, 이벤트 확인, 함수 실행
-makeList()
+getData() // 
+
+
 
 
 // 2. input ID 불러오기 및 저장, 이벤트 확인, 함수 실행
@@ -24,11 +36,12 @@ todo.addEventListener('click', (e) =>{
 })
 
 function makeList() {
+    console.log(todos)
     const ul = document.querySelector(`ul`)
     let htmlString = ``
-    for (let i = 0; i < data.length; i++) {
-        htmlString += `<li data-index="${i}" class="${data[i].completed == 1 ? "grey" : ''}">
-        <input type="checkbox" class = 'checkbox' ${data[i].completed == 1 ? "checked" : ''}>${data[i].title}<button class = "remove">삭제</button>
+    for (let i = 0; i < todos.length; i++) {
+        htmlString += `<li data-index="${i}" class="${todos[i].completed == 1 ? "grey" : ''}">
+        <input type="checkbox" class = 'checkbox' ${todos[i].completed == 1 ? "checked" : ''}>${todos[i].title}<button class = "remove">삭제</button>
         </li>`
     }
     ul.innerHTML = htmlString
